@@ -6,8 +6,8 @@ Termux banner displays system information.
 
 
 ## Features
-- Username, host, OS, kernel
-- Uptime, IP addresses
+- Username, Host, OS, Kernel
+- Uptime, IP Addresses
 - Memory, RAM, CPU
 
 ## Installation
