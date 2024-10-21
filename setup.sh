@@ -1,5 +1,7 @@
 #!/bin/bash
 pkg install bc -y
+
+touch .hushlogin
 # Create the directory
 mkdir -p $HOME/.local/bin/home
 
