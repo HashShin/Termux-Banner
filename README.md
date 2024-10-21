@@ -13,5 +13,5 @@ Termux banner displays system information.
 ## Installation
 
    ```bash
-   curl -fsSL http://raw.githubusercontent.com/HashShin/Termux-Banner/main/setup.sh | sh
+   curl -fsSL http://raw.githubusercontent.com/HashShin/Termux-Banner/main/setup.sh | bash
    ```
