@@ -1,7 +1,8 @@
 #!/bin/bash
 pkg install bc -y
 
-touch .hushlogin
+[ -f "$HOME/.hushlogin" ] || touch "$HOME/.hushlogin"
+
 # Create the directory
 mkdir -p $HOME/.local/bin/home
 
