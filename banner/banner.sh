@@ -7,15 +7,25 @@ username="${GREEN}$(whoami)${RESET}@${GREEN}$(uname -n)${RESET}"
 break_line="${GREEN}-----------------${RESET}"
 
 os="${GREEN}OS:${RESET} Android $(getprop ro.build.version.release) $(uname -m)"
-host="${GREEN}Host:${RESET} $(getprop ro.product.system_dlkm.marketname)"
-kernel="${GREEN}Kernel:${RESET} $(uname -r | awk -F'-' '{print $1"-"$2}')"
-uptime="${GREEN}Uptime:${RESET} $(uptime -p | sed 's/up //; s/ days*/d/; s/ hours*/h/; s/ minutes*/m/; s/,//g')"
+marketname=$(getprop ro.product.system_dlkm.marketname)
+if [ -z "$marketname" ]; then
+    marketname=$(getprop ro.product.marketname)
+fi
+host="${GREEN}Host:${RESET} $marketname"
+
+
+kernel="${GREEN}Kernel:${RESET} $(uname -r | awk -F'-' '{print $1}')"
+uptime="${GREEN}Uptime:${RESET} $(uptime -p | sed 's/up //; s/\([0-9]*\) years*/\1y/; s/\([0-9]*\) weeks*/\1w/; s/\([0-9]*\) days*/\1d/; s/\([0-9]*\) hours*/\1h/; s/\([0-9]*\) minutes*/\1m/; s/,//g')"
+
 
 private_ip="${GREEN}Local IP:${RESET} $(ifconfig 2>/dev/null | awk '/wlan0/{getline; print $2}')"
 
-public_ip="${GREEN}Public IP:${RESET} $(dig +short myip.opendns.com @resolver1.opendns.com)"
+public_ip="${GREEN}Public IP:${RESET} $(curl -s ifconfig.me)"
 
-memory="${GREEN}Memory:${RESET} $(df -h /data | awk 'NR==2 {print $3" / "$2}' | sed 's/G/GB/')"
+
+memory="${GREEN}Memory:${RESET} $(df -h /data | awk 'NR==2 {print $3" / "$2}' | sed 's/GB/GB/g; s/G/GB/g')"
+
+
 
 total_ram_kb=$(grep MemTotal /proc/meminfo | awk '{print $2}')
 available_ram_kb=$(grep MemAvailable /proc/meminfo | awk '{print $2}')

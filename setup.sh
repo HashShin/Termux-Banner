@@ -1,5 +1,5 @@
 #!/bin/bash
-
+pkg install bc -y
 # Create the directory
 mkdir -p $HOME/.local/bin/home
 
