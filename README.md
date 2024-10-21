@@ -12,20 +12,6 @@ Termux banner displays system information.
 
 ## Installation
 
-1. Clone the repository:
-
    ```bash
-   git clone https://github.com/HashShin/Termux-Banner.git
-   ```
-
-2. Copy the script:
-
-   ```bash
-   cp Termux-Banner/banner.txt ~/.local/bin/home/
-   ```
-
-3. Run:
-
-   ```bash
-   bash ~/.local/bin/home/banner.txt
+   http://raw.githubusercontent.com/HashShin/Termux-Banner/refs/heads/main/setup.sh
    ```
